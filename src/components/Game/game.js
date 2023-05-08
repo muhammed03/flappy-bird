@@ -21,7 +21,8 @@ class Game {
         this._score = 0;
         this._record = !localStorage.getItem("record") ? 0 : localStorage.getItem("record");
 
-        this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
+        this._drawEngine =  CanvasDrawEngine({ canvas: this._canvas });
+        this._resourceLoader = ResourceLoader;
     }
 }
 export default new Game();
