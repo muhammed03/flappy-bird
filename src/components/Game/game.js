@@ -129,8 +129,14 @@ class Game {
         const now = Date.now();
         const delta = now - this._lastUpdate;
 
-        // каждый раз обновляем такт
+        // middle of pipe
+        const pipesX1 = this._pipes.x + (this._pipes.width / 2);
+        // update every time
         this.update(delta / 1000.0);
+        const pipesX2 = this._pipes.x + (this._pipes.width / 2);
+
+        const deltaPipesX = pipesX1 - pipesX2;
+        this.updateCounter(deltaPipesX);
 
         if (this._playing) {
             // before drawing, you need to clear the canvas
@@ -147,6 +153,25 @@ class Game {
         }
     }
 
+    // game counter
+    createCounter() {
+        this._counter = document.getElementById(this._config.canvas.counterId);
+        this._counter.innerText = `${this._score}`;
+        this._counter.style.display = "block";
+    }
+
+    updateCounter(deltaPipesX) {
+        const range = deltaPipesX / 2;
+
+        const conditionForIncrease = (this._bird.x + (this._bird.width / 2) - range) < this._pipes.x + (this._pipes.width / 2)
+            && (this._bird.x + (this._bird.width / 2) + range) > this._pipes.x + (this._pipes.width / 2);
+
+        if (conditionForIncrease) {
+            ++this._score;
+            this._counter.innerText = `${this._score}`;
+        }
+    }
+
     // start game
     start() {
         this._canvas.removeEventListener("click", this._canvasListener);
@@ -159,7 +184,7 @@ class Game {
         this._lastUpdate = Date.now();
 
         // run a loop with drawing entities and create a score counter
-        // this.createCounter();
+        this.createCounter();
         this._loop();
     }
 
@@ -172,6 +197,8 @@ class Game {
         }
 
         this._back.draw();
+
+        this._counter.style.display = "none";
 
         this._restartBtn.addEventListener("click", () => {
             // reload page

@@ -1,0 +1,15 @@
+#counter {
+  position: absolute;
+  top: 460px;
+  left: calc(50% - 130px);
+  align-self: flex-start;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  color: #fff;
+  font-weight: bold;
+  font-family: 'a_FuturaRound';
+  font-size: 22px;
+  text-shadow: 2px 2.5px #000;
+  display: none;
+}
