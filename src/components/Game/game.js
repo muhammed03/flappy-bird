@@ -6,6 +6,7 @@ import Back from "../Back/Back";
 import Bird from "../Bird/Bird";
 import Ground from "../Ground/Ground";
 import Pipes from "../Pipes/Pipes";
+import GameOverWords from "../GameOverWords/GameOverWords";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
@@ -107,6 +108,17 @@ class Game {
             spacePipe: this._config.spacePipe,
             index: 0
         });
+
+        this._gameOverWords = new GameOverWords({
+            x: this._config.interfaces.gameOverWords.x,
+            y: this._config.interfaces.gameOverWords.y,
+            width: this._config.interfaces.gameOverWords.width,
+            height: this._config.interfaces.gameOverWords.height,
+            frames: this._config.interfaces.gameOverWords.frames,
+            spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this
+        });
     }
 
     update(delta) {
@@ -197,6 +209,7 @@ class Game {
         }
 
         this._back.draw();
+        this._gameOverWords.draw();
 
         this._counter.style.display = "none";
 
