@@ -39,16 +39,48 @@ class Game {
         });
     }
 
+    draw() {
+        // set the drawing order
+        this._back.draw();
+    }
+
+    _loop() {
+        const now = Date.now();
+
+        if (this._playing) {
+            // before drawing, you need to clear the canvas
+            this._drawEngine.clear();
+
+            // after the update, you need to draw all the components
+            this.draw();
+
+            // last update time
+            this._lastUpdate = now;
+
+            // run the loop
+            requestAnimationFrame(this._loop.bind(this));
+        }
+    }
+
     // start game
     start() {
         this._canvas.removeEventListener("click", this._canvasListener);
 
+        this._playing = true;
+
+        // control game
+        // this._inputHandler.subscribe();
+
         this._lastUpdate = Date.now();
 
+        // run a loop with drawing entities and create a score counter
+        // this.createCounter();
         this._loop();
     }
 
     preview() {
+        // this.reset();
+
         this._canvasListener = () => {
             this.start();
         };
