@@ -7,7 +7,9 @@
     "start": "webpack serve",
     "build-prod": "cross-env NODE_ENV=production webpack",
     "build-dev": "cross-env NODE_ENV=development webpack",
-    "eslint": "npx eslint src/"
+    "eslint": "npx eslint src/",
+    "server": "json-server --watch server/db.json -p 3001",
+    "server-dev": "concurrently \"npm run start\" \"npm run server\""
   },
   "lint-staged": {
     "*.{js}": "eslint --cache --fix"
@@ -24,6 +26,7 @@
     "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
+    "concurrently": "^8.0.1",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
@@ -36,6 +39,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.3",
     "image-webpack-loader": "^8.1.0",
+    "json-server": "^0.17.3",
     "lint-staged": "^13.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss": "^8.4.20",
