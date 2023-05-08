@@ -1,4 +1,4 @@
-import config from "../constants/config";
+import config from "../../constants/config";
 class Game {
     constructor() {
         // config
