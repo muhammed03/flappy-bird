@@ -5,6 +5,7 @@ import spritesheet from "../../images/spritesheet.png";
 import Back from "../Back/Back";
 import Bird from "../Bird/Bird";
 import Ground from "../Ground/Ground";
+import Pipes from "../Pipes/Pipes";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
@@ -92,10 +93,25 @@ class Game {
             drawEngine: this._drawEngine,
             game: this
         });
+
+        this._pipes = new Pipes({
+            x: this._config.pipes.x,
+            y: this._config.pipes.y,
+            width: this._config.pipes.width,
+            height: this._config.pipes.height,
+            frames: this._config.pipes.frames,
+            spriteSheet: this._spriteSheet,
+            speedGame: this._config.speedGame,
+            drawEngine: this._drawEngine,
+            game: this,
+            spacePipe: this._config.spacePipe,
+            index: 0
+        });
     }
 
     update(delta) {
         this._bird.update(delta);
+        this._pipes.update(delta);
     }
 
     draw() {
@@ -103,6 +119,7 @@ class Game {
         this._back.draw();
         this._bird.draw();
         this._ground.draw();
+        this._pipes.draw();
     }
 
     _loop() {
