@@ -1,9 +1,5 @@
 import "./index.html";
 import "./index.scss";
+import Game from "./modules/game";
 
-import { mult, sum } from "./modules/calc";
-
-console.log(mult(3, 4));
-console.log(sum(3, 4));
-
-console.log(process.env.SECRET_KEY);
+// const game = new Game();
