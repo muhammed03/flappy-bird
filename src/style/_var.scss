@@ -1,5 +1,6 @@
 /* Colors */
 $color-white: #fff;
+$color-black: #000;
 $color-dark: #a1a1a1;
 // $color-blue: #3199dc;
 // $color-light: #f8f9fa;
@@ -20,6 +21,6 @@ $color-dark: #a1a1a1;
 // $border-radius: 6px;
 
 /* Shadow */
-// $box-shadow: 0 16px 24px 2px rgba(33, 37, 41, .02),
-//   0 6px 30px 5px rgba(33, 37, 41, .04),
-//   0 8px 10px -5px rgba(33, 37, 41, .1);
+$box-shadow-btn: 3px 3px #000;
+$box-shadow-btn-hover: 1px 1px #000;
+$box-shadow-text: 2px 2.5px #000;
