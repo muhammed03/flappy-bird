@@ -146,6 +146,24 @@ class Game {
         this._loop();
     }
 
+    gameOver() {
+        this._drawEngine.clear();
+
+        // save record
+        if (this._score > this._record) {
+            localStorage.setItem("record", this._score);
+        }
+
+        this._back.draw();
+
+        this._restartBtn.addEventListener("click", () => {
+            // reload page
+            window.location.reload();
+        });
+
+        this._playing = false;
+    }
+
     preview() {
         this.reset();
 

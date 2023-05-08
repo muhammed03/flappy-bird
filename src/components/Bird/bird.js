@@ -19,7 +19,7 @@ export default class Bird extends Base {
 
     #crash() {
         // bird ground collision condition
-        // const conditionForGround = this.y + this.height >= this._game.height;
+        const conditionForGround = this.y + this.height >= this._game.height;
 
         // condition for the bird not to fly above the ceiling
         if (this.y < 0) {
@@ -27,9 +27,9 @@ export default class Bird extends Base {
         }
 
         // condition for end game
-        // if (conditionForGround) {
-        //   this._game.gameOver();
-        // }
+        if (conditionForGround) {
+            this._game.gameOver();
+        }
     }
 
     // метод подлёта
