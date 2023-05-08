@@ -8,6 +8,7 @@ import Ground from "../Ground/Ground";
 import Pipes from "../Pipes/Pipes";
 import GameOverWords from "../GameOverWords/GameOverWords";
 import StartWords from "../StartWords/StartWords";
+import TapImg from "../TapImg/TapImg";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
@@ -131,6 +132,17 @@ class Game {
             drawEngine: this._drawEngine,
             game: this
         });
+
+        this._tapImg = new TapImg({
+            x: this._config.interfaces.tapImg.x,
+            y: this._config.interfaces.tapImg.y,
+            width: this._config.interfaces.tapImg.width,
+            height: this._config.interfaces.tapImg.height,
+            frames: this._config.interfaces.tapImg.frames,
+            spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this
+        });
     }
 
     update(delta) {
@@ -239,6 +251,7 @@ class Game {
         // first rendering of entities
         this._back.draw();
         this._startWords.draw();
+        this._tapImg.draw();
 
         this._canvasListener = () => {
             this.start();
