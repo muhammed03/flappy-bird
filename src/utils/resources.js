@@ -1,4 +1,4 @@
-const RESOURCE_TYPE = {
+export const RESOURCE_TYPE = {
     IMAGE: "image"
 };
 

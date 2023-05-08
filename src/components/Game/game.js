@@ -1,5 +1,8 @@
 import Config from "../../constants/config";
+
 import CanvasDrawEngine from "../../utils/drawEngine";
+import ResourceLoader, { RESOURCE_TYPE } from "../../utils/resources";
+
 class Game {
     constructor() {
         // config
@@ -21,8 +24,18 @@ class Game {
         this._score = 0;
         this._record = !localStorage.getItem("record") ? 0 : localStorage.getItem("record");
 
-        this._drawEngine =  CanvasDrawEngine({ canvas: this._canvas });
+        this._drawEngine = CanvasDrawEngine({ canvas: this._canvas });
         this._resourceLoader = ResourceLoader;
+    }
+
+    // метод который нужно вызвать до запуска игры
+    async prepare() {
+        this._spriteSheet = this._resourceLoader.load({
+            type: RESOURCE_TYPE.IMAGE,
+            src: this._config.spritesheet.src,
+            width: this._config.spritesheet.width,
+            height: this._config.spritesheet.height
+        });
     }
 }
 export default new Game();

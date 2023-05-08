@@ -1,5 +1,9 @@
 import "./index.html";
 import "./index.scss";
-import Game from "./components/Game/game";
 
 // const game = new Game();
+import game from "./components/Game/Game";
+// запускаем подготовку и после неё запуститься игра
+game.prepare().then(() => {
+    game.preview();
+});
