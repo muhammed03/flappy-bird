@@ -1,8 +1,12 @@
+// Since we are loading not only one picture, but also loading the sound into the game
+// We create a separate entity (Class) for this purpose to load all these types of data
+// First you need to have an idea what type of data we will load
+
 export const RESOURCE_TYPE = {
     IMAGE: "image"
 };
 
-class ResourceLoader {
+export default class ResourceLoader {
     _typeLoadersMap = {
         [RESOURCE_TYPE.IMAGE]: async ({ src, width, height }) => {
             return new Promise((resolve, reject) => {
@@ -23,4 +27,3 @@ class ResourceLoader {
         return loadedRes;
     }
 }
-export default new ResourceLoader();

@@ -22,7 +22,7 @@ class Config {
     spritesheet = {
         width: 606,
         height: 428,
-        src: "app/assets/spritesheet.png"
+        src: "src/images/spritesheet.png"
     };
 
     back = {

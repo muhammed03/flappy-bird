@@ -1,8 +1,12 @@
 import Config from "../../constants/config";
+// !!! import as separate image
+import spritesheet from "../../images/spritesheet.png";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import ResourceLoader from "../../utils/resources";
 import { RESOURCE_TYPE } from "../../utils/resources";
+
+import Back from "../Back/Back";
 
 class Game {
     constructor() {
@@ -25,17 +29,31 @@ class Game {
         this._score = 0;
         this._record = !localStorage.getItem("record") ? 0 : localStorage.getItem("record");
 
-        this._drawEngine = CanvasDrawEngine({ canvas: this._canvas });
-        this._resourceLoader = ResourceLoader;
+        this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
+        this._resourceLoader = new ResourceLoader();
     }
 
     // method to be called before starting the game
     async prepare() {
         this._spriteSheet = this._resourceLoader.load({
             type: RESOURCE_TYPE.IMAGE,
-            src: this._config.spritesheet.src,
+            src: spritesheet,
             width: this._config.spritesheet.width,
             height: this._config.spritesheet.height
+        });
+    }
+
+    // начальная отрисовка сущностей игры и сброс праметров
+    reset() {
+        this._back = new Back({
+            x: this._config.back.x,
+            y: this._config.back.y,
+            width: this._config.back.width,
+            height: this._config.back.height,
+            frames: this._config.back.frames,
+            spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this
         });
     }
 
@@ -79,7 +97,7 @@ class Game {
     }
 
     preview() {
-        // this.reset();
+        this.reset();
 
         this._canvasListener = () => {
             this.start();

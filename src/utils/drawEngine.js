@@ -6,7 +6,7 @@ class DrawEngine {
     clear() { }
 }
 
-class CanvasDrawEngine extends DrawEngine {
+export default class CanvasDrawEngine extends DrawEngine {
     constructor({ canvas }) {
         super();
         this._canvas = canvas;
@@ -34,4 +34,3 @@ class CanvasDrawEngine extends DrawEngine {
         this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 }
-export default new CanvasDrawEngine();
