@@ -3,10 +3,12 @@ import Config from "../../constants/config";
 import spritesheet from "../../images/spritesheet.png";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
+import PhysicsEngine from "../../utils/physicsEngine";
 import ResourceLoader from "../../utils/resources";
 import { RESOURCE_TYPE } from "../../utils/resources";
 
 import Back from "../Back/Back";
+import Bird from "../Bird/Bird";
 import Ground from "../Ground/Ground";
 
 class Game {
@@ -31,6 +33,7 @@ class Game {
         this._record = !localStorage.getItem("record") ? 0 : localStorage.getItem("record");
 
         this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
+        this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
         this._resourceLoader = new ResourceLoader();
     }
 
@@ -44,7 +47,7 @@ class Game {
         });
     }
 
-    // начальная отрисовка сущностей игры и сброс праметров
+    // initial rendering of game entities and reset of parameters
     reset() {
         this._back = new Back({
             x: this._config.back.x,
@@ -53,6 +56,21 @@ class Game {
             height: this._config.back.height,
             frames: this._config.back.frames,
             spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this
+        });
+
+        // create a bird entity
+        // {x, y, width, heigth, frames, spriteSheet, flapSpeed, physicsEngine, drawEngine, game}
+        this._bird = new Bird({
+            x: this._config.bird.x,
+            y: this._config.bird.y,
+            width: this._config.bird.width,
+            height: this._config.bird.height,
+            frames: this._config.bird.frames,
+            spriteSheet: this._spriteSheet,
+            flapSpeed: this._config.bird.flapSpeed,
+            physicsEngine: this._physicsEngine,
             drawEngine: this._drawEngine,
             game: this
         });
@@ -73,6 +91,7 @@ class Game {
     draw() {
         // set the drawing order
         this._back.draw();
+        this._bird.draw();
         this._ground.draw();
     }
 
