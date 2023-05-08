@@ -9,6 +9,7 @@ import Pipes from "../Pipes/Pipes";
 import GameOverWords from "../GameOverWords/GameOverWords";
 import StartWords from "../StartWords/StartWords";
 import TapImg from "../TapImg/TapImg";
+import GameOverDesk from "../GameOverDesk/GameOverDesk";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
@@ -143,6 +144,34 @@ class Game {
             drawEngine: this._drawEngine,
             game: this
         });
+
+        this._gameOverDesk = new GameOverDesk({
+            x: this._config.interfaces.gameOverDesk.x,
+            y: this._config.interfaces.gameOverDesk.y,
+            width: this._config.interfaces.gameOverDesk.width,
+            height: this._config.interfaces.gameOverDesk.height,
+            frames: this._config.interfaces.gameOverDesk.frames,
+            spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this,
+
+            scoresX: this._config.interfaces.gameOverDesk.scoresX,
+            scoresY: this._config.interfaces.gameOverDesk.scoresY,
+
+            recordX: this._config.interfaces.gameOverDesk.recordX,
+            recordY: this._config.interfaces.gameOverDesk.recordY,
+
+            medalX: this._config.interfaces.gameOverDesk.medals.x,
+            medalY: this._config.interfaces.gameOverDesk.medals.y,
+            medalW: this._config.interfaces.gameOverDesk.medals.w,
+            medalH: this._config.interfaces.gameOverDesk.medals.h,
+            medalFrames: this._config.interfaces.gameOverDesk.medals.frames,
+
+            recordForBronze: this._config.recordForBronze,
+            recordForSilver: this._config.recordForSilver,
+            recordForGold: this._config.recordForGold,
+            recordForPlatinum: this._config.recordForPlatinum
+        });
     }
 
     update(delta) {
@@ -234,6 +263,7 @@ class Game {
 
         this._back.draw();
         this._gameOverWords.draw();
+        this._gameOverDesk.draw();
 
         this._counter.style.display = "none";
 
