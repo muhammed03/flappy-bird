@@ -1,7 +1,8 @@
 import Config from "../../constants/config";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
-import ResourceLoader, { RESOURCE_TYPE } from "../../utils/resources";
+import ResourceLoader from "../../utils/resources";
+import { RESOURCE_TYPE } from "../../utils/resources";
 
 class Game {
     constructor() {
@@ -28,7 +29,7 @@ class Game {
         this._resourceLoader = ResourceLoader;
     }
 
-    // метод который нужно вызвать до запуска игры
+    // method to be called before starting the game
     async prepare() {
         this._spriteSheet = this._resourceLoader.load({
             type: RESOURCE_TYPE.IMAGE,
@@ -36,6 +37,23 @@ class Game {
             width: this._config.spritesheet.width,
             height: this._config.spritesheet.height
         });
+    }
+
+    // start game
+    start() {
+        this._canvas.removeEventListener("click", this._canvasListener);
+
+        this._lastUpdate = Date.now();
+
+        this._loop();
+    }
+
+    preview() {
+        this._canvasListener = () => {
+            this.start();
+        };
+
+        this._canvas.addEventListener("click", this._canvasListener);
     }
 }
 export default new Game();
