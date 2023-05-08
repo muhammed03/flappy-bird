@@ -7,6 +7,7 @@ import Bird from "../Bird/Bird";
 import Ground from "../Ground/Ground";
 import Pipes from "../Pipes/Pipes";
 import GameOverWords from "../GameOverWords/GameOverWords";
+import StartWords from "../StartWords/StartWords";
 
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
@@ -119,6 +120,17 @@ class Game {
             drawEngine: this._drawEngine,
             game: this
         });
+
+        this._startWords = new StartWords({
+            x: this._config.interfaces.startWords.x,
+            y: this._config.interfaces.startWords.y,
+            width: this._config.interfaces.startWords.width,
+            height: this._config.interfaces.startWords.height,
+            frames: this._config.interfaces.startWords.frames,
+            spriteSheet: this._spriteSheet,
+            drawEngine: this._drawEngine,
+            game: this
+        });
     }
 
     update(delta) {
@@ -226,6 +238,7 @@ class Game {
 
         // first rendering of entities
         this._back.draw();
+        this._startWords.draw();
 
         this._canvasListener = () => {
             this.start();
