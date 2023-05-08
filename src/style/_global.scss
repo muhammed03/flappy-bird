@@ -23,6 +23,11 @@ body {
   padding: 0 15px;
 }
 
+* {
+  scrollbar-color: $color-dark $color-white;
+  scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
