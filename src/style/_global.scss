@@ -11,7 +11,8 @@ body {
 }
 
 .main {
-  flex: 1 0 auto;
+  padding: 10px 0px 10px 0px;
+  max-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,12 +20,7 @@ body {
   background-color: $color-white;
 }
 
-.header {
-  height: 150px;
-}
-
 .footer {
-  height: 150px;
   flex: 0 0 auto;
 }
 

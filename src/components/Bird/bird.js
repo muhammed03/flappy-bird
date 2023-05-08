@@ -61,15 +61,17 @@ export default class Bird extends Base {
 
         // condition for end game
         if (conditionGeneral) {
+            this._game.audioHit.play();
             this._game.gameOver();
         } else if (conditionForGround) {
+            this._game.audioDie.play();
             this._game.gameOver();
         }
     }
 
     // метод подлёта
     flap() {
-        // this._game.audioFlap.play();
+        this._game.audioFlap.play();
         this.speed = -this._flapSpeed;
     }
 }

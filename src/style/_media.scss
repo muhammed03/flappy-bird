@@ -1,0 +1,33 @@
+@media (max-width: 680px) {
+  .main {
+    padding: 10px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 620px) {
+  .main {
+    display: none;
+  }
+  .rotate-phone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .rotate-phone__img {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+  .rotate-phone__text {
+    width: 250px;
+    font-weight: bold;
+    font-family: 'a_FuturaRound';
+    color: $color-white;
+    font-size: 22px;
+    text-shadow: $box-shadow-phone;
+    text-align: center;
+  }
+  #canvas {
+    margin-bottom: 0px;
+  }
+}

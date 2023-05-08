@@ -1,8 +1,6 @@
-@import "var";
-
 .logo {
   width: 200px;
-  margin: 30px auto;
+  margin: 15px auto;
 }
 
 #canvas {
@@ -10,12 +8,11 @@
   box-shadow: $box-shadow-canvas;
 }
 
-
 #restart {
   display: none;
 
   position: absolute;
-  top: 480px;
+  top: 390px;
   left: calc(50% - 41px);
   z-index: 1000;
 
@@ -39,7 +36,7 @@
 
 #counter {
   position: absolute;
-  top: 460px;
+  top: 390px;
   left: calc(50% - 130px);
   align-self: flex-start;
   margin-bottom: 20px;
@@ -51,5 +48,10 @@
   font-family: 'a_FuturaRound';
   font-size: 22px;
   text-shadow: $box-shadow-text;
+  display: none;
+}
+
+.rotate-phone {
+  height: 300px;
   display: none;
 }

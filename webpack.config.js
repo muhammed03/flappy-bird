@@ -97,6 +97,17 @@ module.exports = {
                 },
             },
             {
+                test: /\.(wav)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'assets',
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.(jpe?g|png|webp|gif|svg)$/i,
                 use: devMode
                     ? []

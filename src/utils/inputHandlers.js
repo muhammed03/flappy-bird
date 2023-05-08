@@ -27,6 +27,14 @@ export default class MouseInputHandler extends InputHandler {
             if (handler) {
                 handler(event);
             }
+        },
+        keydown: (event) => {
+            if (event.code === "Space") {
+                const handler = this._eventHandlerConfig.spacebar;
+                if (handler) {
+                    handler(event);
+                }
+            }
         }
     };
 }
