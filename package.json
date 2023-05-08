@@ -9,6 +9,9 @@
     "build-dev": "cross-env NODE_ENV=development webpack",
     "eslint": "npx eslint src/"
   },
+  "lint-staged": {
+    "*.{js}": "eslint --cache --fix"
+  },
   "keywords": [],
   "author": "Muhammed Abdrahman <muhammed03amin@gmail.com>",
   "license": "ISC",
@@ -31,7 +34,9 @@
     "group-css-media-queries-loader": "^4.3.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "image-webpack-loader": "^8.1.0",
+    "lint-staged": "^13.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss": "^8.4.20",
     "postcss-loader": "^7.0.2",

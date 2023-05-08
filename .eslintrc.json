@@ -18,6 +18,11 @@
     "max-len": ["error", { "code": 110 }], // enforce a maximum line length
     "indent": ["off", "2"], // enforces a consistent indentation style
     "no-useless-concat": "off", // rule aims to flag the concatenation of 2 literals when they could be combined into a single literal
+    "space-infix-ops": ["off", { "int32Hint": false }],
+    "no-unused-expressions": "off",
+    "no-plusplus": "off", // disallow the unary operators ++ and --
+    "no-alert": "error", // disallow the use of alert, confirm, and prompt
+    "eqeqeq": "off", // require the use of === and !==
     "linebreak-style": 0,
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"]
