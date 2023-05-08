@@ -17,7 +17,7 @@ export default class Bird extends Base {
 
     // метод подлёта
     flap() {
-        this._game.audioFlap.play();
+        // this._game.audioFlap.play();
         this.speed = -this._flapSpeed;
     }
 }

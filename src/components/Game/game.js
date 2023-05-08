@@ -2,14 +2,15 @@ import Config from "../../constants/config";
 // !!! import as separate image
 import spritesheet from "../../images/spritesheet.png";
 
+import Back from "../Back/Back";
+import Bird from "../Bird/Bird";
+import Ground from "../Ground/Ground";
+
 import CanvasDrawEngine from "../../utils/drawEngine";
 import PhysicsEngine from "../../utils/physicsEngine";
 import ResourceLoader from "../../utils/resources";
 import { RESOURCE_TYPE } from "../../utils/resources";
-
-import Back from "../Back/Back";
-import Bird from "../Bird/Bird";
-import Ground from "../Ground/Ground";
+import MouseInputHandler from "../../utils/inputHandlers";
 
 class Game {
     constructor() {
@@ -35,6 +36,11 @@ class Game {
         this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
         this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
         this._resourceLoader = new ResourceLoader();
+        this._inputHandler = new MouseInputHandler({
+            left: () => {
+                this._bird.flap();
+            }
+        });
     }
 
     // method to be called before starting the game
@@ -88,6 +94,10 @@ class Game {
         });
     }
 
+    update(delta) {
+        this._bird.update(delta);
+    }
+
     draw() {
         // set the drawing order
         this._back.draw();
@@ -96,7 +106,14 @@ class Game {
     }
 
     _loop() {
+        // State update depends on delta
+        // The more time has passed, the farther the bird will be
+        // That is, we need to multiply our displacement by delta
         const now = Date.now();
+        const delta = now - this._lastUpdate;
+
+        // каждый раз обновляем такт
+        this.update(delta / 1000.0);
 
         if (this._playing) {
             // before drawing, you need to clear the canvas
@@ -120,7 +137,7 @@ class Game {
         this._playing = true;
 
         // control game
-        // this._inputHandler.subscribe();
+        this._inputHandler.subscribe();
 
         this._lastUpdate = Date.now();
 
@@ -131,6 +148,9 @@ class Game {
 
     preview() {
         this.reset();
+
+        // first rendering of entities
+        this._back.draw();
 
         this._canvasListener = () => {
             this.start();
