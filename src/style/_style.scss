@@ -1,5 +1,10 @@
 @import "var";
 
+.logo {
+  width: 200px;
+  margin: 30px auto;
+}
+
 #canvas {
   border: 2px solid $color-grey;
   box-shadow: $box-shadow-canvas;
