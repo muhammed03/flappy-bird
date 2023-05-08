@@ -7,6 +7,7 @@ import ResourceLoader from "../../utils/resources";
 import { RESOURCE_TYPE } from "../../utils/resources";
 
 import Back from "../Back/Back";
+import Ground from "../Ground/Ground";
 
 class Game {
     constructor() {
@@ -55,11 +56,24 @@ class Game {
             drawEngine: this._drawEngine,
             game: this
         });
+
+        this._ground = new Ground({
+            x: this._config.ground.x,
+            y: this._config.ground.y,
+            width: this._config.ground.width,
+            height: this._config.ground.height,
+            frames: this._config.ground.frames,
+            spriteSheet: this._spriteSheet,
+            speedGame: this._config.speedGame,
+            drawEngine: this._drawEngine,
+            game: this
+        });
     }
 
     draw() {
         // set the drawing order
         this._back.draw();
+        this._ground.draw();
     }
 
     _loop() {
