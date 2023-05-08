@@ -1,4 +1,5 @@
 import Config from "../../constants/config";
+import CanvasDrawEngine from "../../utils/drawEngine";
 class Game {
     constructor() {
         // config
@@ -19,6 +20,8 @@ class Game {
         // rating
         this._score = 0;
         this._record = !localStorage.getItem("record") ? 0 : localStorage.getItem("record");
+
+        this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
     }
 }
 export default new Game();
