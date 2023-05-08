@@ -14,6 +14,7 @@
     "semi": ["error", "always"], // semicolon check
     "quotes": ["error", "double"], // check for quotes
     "no-console": "off", // rule disallows calls or assignments to methods of the console object
+    "no-debugger": "error", // disallow the use of debugger
     "linebreak-style": 0,
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"]
