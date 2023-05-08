@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  background-color: $color-grey;
 }
 
 .wrapper {
@@ -15,9 +16,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: $color-white;
+}
+
+.header {
+  height: 150px;
 }
 
 .footer {
+  height: 150px;
   flex: 0 0 auto;
 }
 
@@ -27,11 +34,13 @@ body {
   padding: 0 15px;
 }
 
+/* scrollbar for FireFox */
 * {
   scrollbar-color: $color-dark $color-white;
   scrollbar-width: thin;
 }
 
+/* scrollbar for Chrome */
 ::-webkit-scrollbar {
   width: 8px;
 }

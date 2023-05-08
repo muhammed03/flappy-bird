@@ -265,11 +265,13 @@ class Game {
         this._gameOverWords.draw();
         this._gameOverDesk.draw();
 
+        this._restartBtn.style.display = "block";
         this._counter.style.display = "none";
 
         this._restartBtn.addEventListener("click", () => {
             // reload page
             window.location.reload();
+            this._restartBtn.style.display = "none";
         });
 
         this._playing = false;
