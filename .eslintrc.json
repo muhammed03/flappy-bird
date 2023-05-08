@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "airbnb-base/legacy",
+  "overrides": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": ["error", "always"], // semicolon check
+    "quotes": ["error", "double"], // check for quotes
+    "no-console": "off", // rule disallows calls or assignments to methods of the console object
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"]
+  }
+}
